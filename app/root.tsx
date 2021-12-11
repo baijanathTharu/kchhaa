@@ -16,6 +16,7 @@ import globalCss from './styles/global.css';
 import tailwindUrl from './styles/tailwind.css';
 import { Layout } from './components/layout';
 import { getUser } from './utils/session.server';
+import { AuthProvider } from './contexts/auth';
 
 /**
  * The `links` export is a function that returns an array of objects that map to
@@ -32,6 +33,7 @@ export let links: LinksFunction = () => {
   ];
 };
 
+// TODO: add type for user
 type LoaderData = {
   user: any;
 };
@@ -50,8 +52,12 @@ export const loader: LoaderFunction = async ({
 export default function App() {
   const data = useLoaderData<LoaderData>();
   return (
-    <Document user={data.user}>
-      <Outlet />
+    <Document>
+      <AuthProvider auth={data}>
+        <Layout>
+          <Outlet />
+        </Layout>
+      </AuthProvider>
     </Document>
   );
 }
@@ -59,11 +65,9 @@ export default function App() {
 function Document({
   children,
   title,
-  user = null,
 }: {
   children: React.ReactNode;
   title?: string;
-  user?: any;
 }) {
   return (
     <html lang='en'>
@@ -75,7 +79,7 @@ function Document({
         <Links />
       </head>
       <body>
-        <Layout user={user}>{children}</Layout>
+        {children}
         <RouteChangeAnnouncement />
         <ScrollRestoration />
         <Scripts />

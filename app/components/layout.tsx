@@ -1,16 +1,10 @@
 import React from 'react';
 import { Nav } from './nav';
 
-export const Layout = ({
-  children,
-  user,
-}: {
-  children: React.ReactNode;
-  user: any;
-}) => {
+export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <Nav user={user} />
+      <Nav />
       <main className='pt-20 max-w-4xl mx-auto'>{children}</main>
     </>
   );
