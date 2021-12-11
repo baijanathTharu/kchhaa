@@ -37,6 +37,10 @@ const sessionSecret = process.env.SESSION_SECRET || 'secret';
 if (!sessionSecret) {
   throw new Error('SESSION_SECRET must be set');
 }
+const maxAge = process.env.MAX_AGE || '3600';
+if (!maxAge) {
+  throw new Error('Max age must be set');
+}
 
 const storage = createCookieSessionStorage({
   cookie: {
@@ -48,7 +52,7 @@ const storage = createCookieSessionStorage({
     secrets: [sessionSecret],
     sameSite: 'lax',
     path: '/',
-    maxAge: 60 * 60 * 24 * 30,
+    maxAge: parseInt(maxAge),
     httpOnly: true,
   },
 });
