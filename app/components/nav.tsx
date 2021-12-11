@@ -14,7 +14,7 @@ export const Nav = () => {
         {data?.user ? (
           <>
             <div className='ml-auto border-b-2 border-transparent hover:text-gray-800 hover:border-blue-500'>
-              <Link to={`/profile/${data.user.sub}`}>{data.user.sub}</Link>
+              <Link to={`/profile/${data.user.sub}`}>Your Profile</Link>
             </div>
             <div className='ml-4 border-b-2 border-transparent hover:text-gray-800 hover:border-blue-500'>
               <form action='/logout' method='post'>

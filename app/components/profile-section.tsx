@@ -1,11 +1,15 @@
+import { Link } from 'remix';
+import { MdEdit } from 'react-icons/md';
 import { KchhaaForm } from './kchhaa-form';
 
 export const ProfileSection = ({
   fullName,
-  email,
+  description,
+  userId,
 }: {
   fullName: string;
-  email: string | undefined;
+  description: string | null | undefined;
+  userId: string;
 }) => {
   return (
     <>
@@ -21,10 +25,14 @@ export const ProfileSection = ({
           />
           <p className='flex flex-col font-semibold text-gray-700 cursor-pointer'>
             {fullName}
-            <span className='text-gray-400 font-normal'>{email}</span>
+            <span className='text-gray-400 font-normal'>{description}</span>
           </p>
           <div className='ml-auto mr-8'>
-            <button>kchhaa</button>
+            <Link to={`/profile/edit/${userId}`}>
+              <a className='text-black font-bold text-2xl w-6 h-6'>
+                <MdEdit />
+              </a>
+            </Link>
           </div>
         </div>
         <KchhaaForm />
