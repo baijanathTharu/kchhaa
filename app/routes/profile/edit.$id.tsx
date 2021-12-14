@@ -1,4 +1,4 @@
-import { useActionData, useLoaderData, redirect } from 'remix';
+import { useActionData, useLoaderData, redirect, useTransition } from 'remix';
 import type { ActionFunction, LoaderFunction } from 'remix';
 import invariant from 'tiny-invariant';
 import { ProfileForm } from '~/components/profile-form';
@@ -80,10 +80,16 @@ export const loader: LoaderFunction = async ({
 export default function ProfileEdit() {
   const actionData = useActionData<ProfileActionData>();
   const loaderData = useLoaderData<ProfileLoaderData>();
+
+  const transition = useTransition();
   return (
     <div className='mt-5 flex flex-col justify-center items-center'>
       <h2 className='text-lg'>Edit Profile</h2>
-      <ProfileForm actionData={actionData} loaderData={loaderData} />
+      <ProfileForm
+        actionData={actionData}
+        loaderData={loaderData}
+        transition={transition}
+      />
     </div>
   );
 }

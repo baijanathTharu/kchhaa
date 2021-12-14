@@ -1,4 +1,11 @@
-import { Form, Link, useActionData, useSearchParams, redirect } from 'remix';
+import {
+  Form,
+  Link,
+  useActionData,
+  useSearchParams,
+  redirect,
+  useTransition,
+} from 'remix';
 import type { ActionFunction, LoaderFunction } from 'remix';
 import { createUserSession, getUser, login } from '~/utils/session.server';
 
@@ -87,6 +94,8 @@ export default function Login() {
   const actionData = useActionData<ActionData>();
   const [searchParams] = useSearchParams();
 
+  const transition = useTransition();
+
   return (
     <div className='flex justify-center items-center h-[80vh]'>
       <section className='max-w-2xl p-6 mx-auto bg-white rounded-md shadow-md'>
@@ -157,7 +166,7 @@ export default function Login() {
               type='submit'
               className='px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'
             >
-              Submit
+              {transition.state === 'submitting' ? 'Submitting' : 'Submit'}
             </button>
             <Link to='/'>
               <button className='px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-red-400 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600'>

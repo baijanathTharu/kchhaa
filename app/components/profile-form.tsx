@@ -1,3 +1,4 @@
+import type { Transition } from '@remix-run/react/transition';
 import React from 'react';
 import { Form, Link } from 'remix';
 import { ProfileActionData, ProfileLoaderData } from '~/routes/profile/$id';
@@ -5,9 +6,11 @@ import { ProfileActionData, ProfileLoaderData } from '~/routes/profile/$id';
 export const ProfileForm = ({
   actionData,
   loaderData,
+  transition,
 }: {
   actionData: ProfileActionData | undefined;
   loaderData: ProfileLoaderData | undefined;
+  transition: Transition;
 }) => {
   const [firstName, setFirstName] = React.useState(
     loaderData?.data?.first_name
@@ -89,7 +92,7 @@ export const ProfileForm = ({
           type='submit'
           className='px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'
         >
-          Submit
+          {transition.state === 'submitting' ? 'Submitting' : 'Submit'}
         </button>
         <Link to={`/profile/${loaderData?.user_id}`}>
           <button className='px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-red-400 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600'>
