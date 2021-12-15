@@ -9,5 +9,7 @@ module.exports = {
     }
   }, // customize the theme however you want here
   variants: {}, // activate any variant you want here
-  plugins: [], // add any plugin you need here
+  plugins: [
+    require('daisyui')
+  ], // add any plugin you need here
 };
