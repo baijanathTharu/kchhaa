@@ -61,6 +61,7 @@ export function Nav() {
                 options={themes}
                 title='select themes'
                 onChange={(e) => {
+                  console.log('changed');
                   const value = e.target.value;
                   theme?.setTheme({
                     name: value,
