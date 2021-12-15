@@ -5,9 +5,10 @@
   "license": "",
   "scripts": {
     "postinstall": "remix setup node",
-    "build": "tailwindcss --output ./app/styles/tailwind.css --config ./config/tailwind.js --minify && remix build",
+    "build": "remix build",
     "dev": "concurrently \"npm:dev:tailwind\" \"npm:dev:web\"",
     "dev:tailwind": "tailwindcss --output ./app/styles/tailwind.css --config ./config/tailwind.js --watch",
+    "build:tailwind": "tailwindcss --output ./app/styles/tailwind.css --config ./config/tailwind.js --minify",
     "dev:web": "node -r dotenv/config node_modules/.bin/remix dev"
   },
   "dependencies": {
