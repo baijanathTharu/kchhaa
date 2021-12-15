@@ -5,7 +5,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Nav />
-      <main className='pt-20 max-w-4xl mx-auto'>{children}</main>
+      <main className='max-w-4xl mx-auto'>{children}</main>
     </>
   );
 };
