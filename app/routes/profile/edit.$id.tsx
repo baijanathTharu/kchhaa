@@ -84,7 +84,6 @@ export default function ProfileEdit() {
   const transition = useTransition();
   return (
     <div className='mt-5 flex flex-col justify-center items-center'>
-      <h2 className='text-lg'>Edit Profile</h2>
       <ProfileForm
         actionData={actionData}
         loaderData={loaderData}

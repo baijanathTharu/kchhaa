@@ -98,8 +98,8 @@ export default function Login() {
 
   return (
     <div className='flex justify-center items-center h-[80vh]'>
-      <section className='max-w-2xl p-6 mx-auto bg-white rounded-md shadow-md'>
-        <h2 className='text-center text-lg font-semibold text-gray-700 capitalize'>
+      <section className='max-w-2xl p-6 mx-auto bg-primary text-primary-content rounded-md shadow-md'>
+        <h2 className='text-center text-lg font-semibold  capitalize'>
           Login Form
         </h2>
 
@@ -113,17 +113,17 @@ export default function Login() {
             value={searchParams.get('redirectTo') ?? undefined}
           />
           <div className='grid grid-cols-1 gap-6 mt-4'>
-            <p id='form-error' className='text-red-400'>
+            <p id='form-error' className='text-error'>
               {actionData?.formError && (actionData?.formError as string)}
             </p>
-            <div>
-              <label className='text-gray-700' htmlFor='email'>
+            <div className='flex flex-col gap-1'>
+              <label className='' htmlFor='email'>
                 Email Address
               </label>
               <input
                 name='email'
                 type='email'
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-blue-500 focus:outline-none focus:ring'
+                className='input input-bordered'
                 aria-invalid={
                   Boolean(actionData?.fieldErrors?.email) || undefined
                 }
@@ -131,20 +131,18 @@ export default function Login() {
                   actionData?.fieldErrors?.email ? 'email-error' : undefined
                 }
               />
-              <p id='email-error' className='text-red-400'>
+              <p id='email-error' className='text-error'>
                 {actionData?.fieldErrors?.email &&
                   (actionData?.fieldErrors?.email as string)}
               </p>
             </div>
 
-            <div>
-              <label className='text-gray-700' htmlFor='password'>
-                Password
-              </label>
+            <div className='flex flex-col gap-1'>
+              <label htmlFor='password'>Password</label>
               <input
                 name='password'
                 type='password'
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring'
+                className='input input-bordered'
                 aria-invalid={
                   Boolean(actionData?.fieldErrors?.password) || undefined
                 }
@@ -154,25 +152,23 @@ export default function Login() {
                     : undefined
                 }
               />
-              <p id='password-error' className='text-red-400'>
+
+              <p id='password-error' className='text-error'>
                 {actionData?.fieldErrors?.password &&
                   (actionData?.fieldErrors?.password as string)}
               </p>
             </div>
           </div>
 
-          <div className='mx-auto w-4/5 flex justify-between gap-8 mt-6'>
-            <button
-              type='submit'
-              className='px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'
-            >
+          <div className='w-full grid grid-cols-2 mt-6 gap-2'>
+            <button type='submit' className='btn btn-secondary'>
               {transition.state === 'submitting' ? 'Submitting' : 'Submit'}
             </button>
-            <Link to='/'>
-              <button className='px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-red-400 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600'>
+            <button className='btn btn-neutral btn-outline'>
+              <Link to='/' className='flex-1'>
                 Cancel
-              </button>
-            </Link>
+              </Link>
+            </button>
           </div>
         </Form>
       </section>
