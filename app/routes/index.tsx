@@ -44,7 +44,7 @@ export default function Home() {
               return (
                 <div
                   key={c.id}
-                  className='mx-3 py-4 w-36 flex justify-center items-center  bg-red-500 text-white  overflow-hidden rounded-lg shadow-md  hover:cursor-pointer hover:text-white hover:shadow-xl hover:bg-red-400 transition-shadow duration-300 ease-in-out'
+                  className='mx-3 py-3 w-36 flex justify-center items-center  bg-primary text-primary-content  overflow-hidden rounded-lg shadow-md  hover:cursor-pointer hover:text-white hover:shadow-xl hover:bg-primary-focus transition-shadow duration-300 ease-in-out'
                 >
                   <p>{c.name}</p>
                 </div>
