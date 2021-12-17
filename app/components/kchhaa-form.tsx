@@ -1,11 +1,14 @@
 export const KchhaaForm = () => {
   return (
-    <section className='mx-4 py-4 bg-white rounded-md shadow-md'>
+    <section className='mx-4 py-4 bg-primary text-primary-content rounded-md shadow-md'>
       <div className='w-full mt-2'>
-        <textarea className='block w-full h-40 px-4 py-2 resize-none text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'></textarea>
+        <textarea
+          className='textarea textarea-primary text-primary-content opacity-90 bg-primary w-full h-40 resize-none'
+          placeholder='kchhaa...'
+        ></textarea>
 
         <div className='mt-4'>
-          <button className='w-36 px-4 py-2 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
+          <button className='w-36 px-4 py-2 btn btn-neutral animate-pulse'>
             Submit
           </button>
         </div>
