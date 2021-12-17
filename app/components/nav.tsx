@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'remix';
-import { MdLock } from 'react-icons/md';
-import { FaLockOpen, FaUser } from 'react-icons/fa';
+import { MdCancel, MdLock } from 'react-icons/md';
+import { FaLockOpen, FaTimes, FaUser } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useAuth } from '~/contexts/auth';
 import { useTheme } from '~/contexts/theme';
 import { themes } from '~/themes';
 import { Select } from './select';
+import { useDrawer } from './drawer';
 
 export function Nav() {
   const { data } = useAuth();
   const theme = useTheme();
+  const { setIsOpen, isOpen } = useDrawer();
 
   React.useEffect(() => {
     const themeName = theme?.theme?.name;
@@ -74,7 +76,16 @@ export function Nav() {
           </div>
         </div>
         <div className='flex-none lg:hidden'>
-          <GiHamburgerMenu className='w-4 h-4' />
+          <button
+            className='btn btn-outline btn-square btn-lg'
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {!isOpen ? (
+              <GiHamburgerMenu className='w-6 h-6' />
+            ) : (
+              <FaTimes className='w-6 h-6' />
+            )}
+          </button>
         </div>
       </div>
     </div>

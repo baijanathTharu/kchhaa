@@ -18,6 +18,7 @@ import { Layout } from './components/layout';
 import { getUser } from './utils/session.server';
 import { AuthProvider } from './contexts/auth';
 import { ThemeProvider } from './contexts/theme';
+import { DrawerProvider } from './components/drawer';
 
 /**
  * The `links` export is a function that returns an array of objects that map to
@@ -56,9 +57,11 @@ export default function App() {
     <Document>
       <ThemeProvider>
         <AuthProvider auth={data}>
-          <Layout>
-            <Outlet />
-          </Layout>
+          <DrawerProvider>
+            <Layout>
+              <Outlet />
+            </Layout>
+          </DrawerProvider>
         </AuthProvider>
       </ThemeProvider>
     </Document>
